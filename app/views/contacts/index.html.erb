@@ -1,0 +1,150 @@
+<%= render 'top' %>
+<!-- Title, Breadcrumb Start-->
+<div class="breadcrumb-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6">
+        <h2 class="title">关于我们</h2>
+      </div>
+      <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6">
+        <div class="breadcrumbs pull-right">
+          <ul>
+
+            <li><a href="index-2.html">主页</a></li>
+            <li><a href="#">关于我们</a></li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Title, Breadcrumb End-->
+<!-- Main Content start-->
+<div class="content">
+  <div class="container">
+
+
+    <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
+
+
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+        <h3 class="title">关于我们</h3>
+        <p>
+          <% if @contacts %>
+         <%= @contacts.content.html_safe %>
+              <% end %>
+        </p>
+
+        <div class="divider"></div>
+
+        <h3 class="title">我们的位置</h3>
+
+
+
+
+        <!--引用百度地图API-->
+
+        <meta charset="UTF-8">
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes" src="baidumap.html" width="717" height="570" >
+          </iframe>
+
+
+
+
+
+        <div class="divider"></div>
+
+        <%= form_tag(action:'create', method: "post") do %>
+
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <label>姓名: <span>*</span></label>
+
+                <%= text_field_tag :name,params[:name],class:"form-control"  %>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <label>联系方式:<span>*</span></label>
+
+                <%= text_field_tag :information,params[:information],class:"form-control"  %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <label>主题: <span>*</span></label>
+
+                <%= text_field_tag :title,params[:title],class:"form-control"  %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <label>留言: <span>*</span></label>
+
+                <%= text_area_tag :content,params[:content],class:"form-control",rows:'3',cols:'40'  %>
+              </div>
+            </div>
+
+          <button class="btn-normal btn-color submit  bottom-pad pull-right" type="submit">发送</button>
+
+        <% end %>
+        <br>
+      </div>
+
+      <div class="col-lg-4 col-md-4 col-xs-12 col-sm-6">
+        <div class="address widget">
+          <h3 class="title">联系我们</h3>
+          <ul class="contact-us">
+            <li>
+              <i class="icon-map-marker"></i>
+              <p>
+                <strong>地址:</strong>
+                <%= public_config.address %>
+              </p>
+            </li>
+
+
+
+            <li>
+              <i class="icon-phone"></i>
+              <p>
+                <strong>电话:</strong>
+                <%= public_config.tel %>
+              </p>
+            </li>
+            <li>
+              <i class="icon-envelope"></i>
+              <p>
+                <strong>邮箱:</strong>
+                <%= public_config.mail %>
+              </p>
+            </li>
+            <li>
+              <i class="icon-comments"></i>
+              <p>
+                <strong>QQ:</strong>
+                <%= public_config.qq %>
+              </p>
+            </li>
+
+
+
+          </ul>
+        </div>
+
+
+
+    </div>
+
+    <div class="divider"></div>
+  </div>
+</div>
+<!-- Main Content end-->
+</div>
+<!-- Content End -->
+<%= render 'footer' %>
+
